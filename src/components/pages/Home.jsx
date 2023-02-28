@@ -3,7 +3,7 @@ import LinkButton from "../ui/LinkButton";
 export default function Home (){
 
   return (
-    <div className=" w-full max-w-xl mx-auto mt-32 bg-lightgray">
+    <div className=" w-full max-w-xl mx-auto mt-28 bg-lightgray">
       <div className="text-violet flex flex-col place-content-center items-center  pt-54.5 pb-46 relative overflow-hidden">
         <img
           src="/icons/blob 5 (1).svg"
