@@ -12,7 +12,7 @@ export default function Questions() {
    return (
      <div>
        <p key={key}>{eachQuestion.question}</p>
-       <p>{eachQuestion.correct_answer}</p>
+       <p>{eachQuestion.incorrect_answers}</p>
      </div>
    );
     
