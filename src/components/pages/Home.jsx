@@ -14,7 +14,7 @@ export default function Home (){
         <p className="text-lg font-normal pt-2 pb-7">
           Some description if needed
         </p>
-        <LinkButton name="Start Quiz" />
+        <LinkButton name="Start Quiz" link='/question' handleData="setData" />
         <img
           src="/icons/blob 5.svg"
           alt="buble"

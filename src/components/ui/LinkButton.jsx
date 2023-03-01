@@ -1,3 +1,3 @@
 export default function LinkButton(props){
-  return <button className="py-2 px-16 bg-violet rounded-lg text-white text-lg font-medium">{props.name}</button>;
+  return <a className="py-2 px-16 bg-violet rounded-2xl text-white text-lg font-medium" href={props.link} onClick={props.handleData}>{props.name}</a>;
 }
