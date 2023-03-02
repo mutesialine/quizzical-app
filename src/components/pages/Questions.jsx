@@ -1,19 +1,14 @@
-import Button from "../ui/Button";
 import LinkButton from "../ui/LinkButton";
 import { useEffect, useState } from "react";
- import AnsweredQuestion from "./AnsweredQuestion";
-
-
-
+import AnsweredQuestion from "./AnsweredQuestion";
 
 export default function Questions() {
   //for fetching data and diplay it to the page
   const [Data, setData] = useState();
-  //function for handling selection
-  const [selected, setSelection] = useState(false);
-  function getSelection() {
-    setSelection((prev) => !prev);
-  }
+  const [selected, setSelection] = useState(null);
+  const getSelection = (element) => {
+    setSelection(element)
+  };
 
   const Question = Data?.map((eachQuestion, key) => {
     const allAnswer = [];
@@ -29,10 +24,11 @@ export default function Questions() {
         <div className="flex gap-x-6 pt-4">
           {allAnswer.map((element, key) => (
             <AnsweredQuestion
-             key={key}
-             element={element}
+              key={key}
+              element={element}
+              styles={selected === element ? "bg-green-500" : ""}
+              handleSelection={()=>getSelection(element)}
             />
-          
           ))}
         </div>
       </div>
