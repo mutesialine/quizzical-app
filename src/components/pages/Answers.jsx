@@ -13,12 +13,6 @@ export default function Answers() {
         <h2 className="font-bold text-lg text-violet  pb-4 px-8">
           How would one say goodbye in Spanish?
         </h2>
-        <div className="flex gap-x-2">
-          <Button text="Hola" />
-          <Button text="Adiós" />
-          <Button text="Au Revoir" />
-          <Button text="Adiós" />
-        </div>
         <img
           src="/icons/blob 5.svg"
           alt="buble"

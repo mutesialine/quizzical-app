@@ -1,39 +1,9 @@
 import LinkButton from "../ui/LinkButton";
 import { useEffect, useState } from "react";
-import AnsweredQuestion from "./AnsweredQuestion";
+import OneQuestion from "./OneQestion";
 
 export default function Questions() {
-  //for fetching data and diplay it to the page
   const [Data, setData] = useState();
-  const [selected, setSelection] = useState(null);
-  const getSelection = (element) => {
-    setSelection(element)
-  };
-
-  const Question = Data?.map((eachQuestion, key) => {
-    const allAnswer = [];
-    allAnswer.push(eachQuestion.correct_answer);
-    allAnswer.push(eachQuestion.incorrect_answers);
-    console.log(allAnswer);
-
-    return (
-      <div className="border-b-2 border-gray-300 pb-4">
-        <p key={key} className="text-lg">
-          {key + 1}.{eachQuestion.question}{" "}
-        </p>
-        <div className="flex gap-x-6 pt-4">
-          {allAnswer.map((element, key) => (
-            <AnsweredQuestion
-              key={key}
-              element={element}
-              styles={selected === element ? "bg-green-500" : ""}
-              handleSelection={()=>getSelection(element)}
-            />
-          ))}
-        </div>
-      </div>
-    );
-  });
   useEffect(() => {
     fetch("https://opentdb.com/api.php?amount=5")
       .then((res) => res.json())
@@ -41,7 +11,6 @@ export default function Questions() {
         setData(Data.results);
       });
   }, []);
-
   return (
     <div className=" w-full max-w-xl mx-auto mt-28 bg-lightgray">
       <div className="flex flex-col place-content-center items-center py-6 px-12 relative overflow-hidden">
@@ -51,7 +20,14 @@ export default function Questions() {
           className="w-58.57 absolute -top-8 -right-14"
         />
         <div className="font-bold  text-violet pb-4 space-y-8 pt-4">
-          {Question}
+          {Data?.map((eachQuestion, key) => {
+            return (
+              <OneQuestion
+                eachQuestion ={eachQuestion}
+                key={key}
+              />
+            );
+          })}
         </div>
         <p>{Data ? "" : "Please wait"}</p>
 
