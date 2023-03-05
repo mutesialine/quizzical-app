@@ -1,28 +1,12 @@
-import Button from "../ui/Button";
-import LinkButton from "../ui/LinkButton";
+import LinkButton from "../ui/Button";
+import { useEffect, useState } from "react";
+import OneQuestion from "./Question";
+import Questions from "./Quiz";
 
-export default function Answers() {
+export default function Answer() {
   return (
-    <div className=" w-full max-w-xl mx-auto mt-28 bg-lightgray">
-      <div className="flex flex-col place-content-center items-center  pt-54.5 pb-46 relative overflow-hidden">
-        <img
-          src="/icons/blob 5 (1).svg"
-          alt="buble"
-          className="w-58.57 absolute -top-8 -right-14"
-        />
-        <h2 className="font-bold text-lg text-violet  pb-4 px-8">
-          How would one say goodbye in Spanish?
-        </h2>
-        <img
-          src="/icons/blob 5.svg"
-          alt="buble"
-          className="w-58.57 absolute -bottom-10 -left-28"
-        />
-        <div className="pt-16 flex gap-2">
-          <LinkButton link="/" name="Start Again" />
-          
-        </div>
-      </div>
-    </div>
+    <>
+      <p>fghjkl</p>
+    </>
   );
 }

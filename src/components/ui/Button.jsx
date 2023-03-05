@@ -1,5 +1,5 @@
+
 export default function Button (props){
-return(
-  <div className="px-8 py-2 rounded-2xl border border-violet">{props.text}</div>
-);
+  
+  return <button className="py-2 px-16 bg-violet rounded-2xl text-white text-lg font-medium"  onClick={props.handleData} >{props.name}</button>;
 }
