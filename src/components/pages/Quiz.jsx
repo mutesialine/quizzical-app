@@ -8,15 +8,19 @@ export default function Quiz() {
   const Allcorrectanswer = Data.filter(
     (el) => el["correct_answer"] === el.chosenAnswer
   );
+
+
+   function AllQuestion() {
+     fetch("https://opentdb.com/api.php?amount=5")
+       .then((res) => res.json())
+       .then(saveData);
+   }
+   
   useEffect(() => {
     AllQuestion();
   }, []);
 
-  function AllQuestion() {
-    fetch("https://opentdb.com/api.php?amount=5")
-      .then((res) => res.json())
-      .then(saveData);
-  }
+ 
 
   function saveData(Data) {
     const newData = Data.results.map((el) => ({
