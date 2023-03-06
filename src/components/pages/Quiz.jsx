@@ -3,9 +3,9 @@ import { useEffect, useState } from "react";
 import Question from "./Question";
 
 export default function Quiz() {
-  const [Data, setData] = useState([]);
+  const [data, setData] = useState([]);
   const [checkAnswer, setCheckAnswer] = useState(false);
-  const Allcorrectanswer = Data.filter(
+  const Allcorrectanswer = data.filter(
     (el) => el["correct_answer"] === el.chosenAnswer
   );
 
@@ -21,8 +21,8 @@ export default function Quiz() {
         .then(saveData);
   }, []);
 
-  function saveData(Data) {
-    const newData = Data.results.map((el) => ({
+  function saveData(data) {
+    const newData = data.results.map((el) => ({
       ...el,
       chosenAnswer: null,
       randomAnswers: [el["correct_answer"], ...el["incorrect_answers"]].sort(),
@@ -46,7 +46,7 @@ export default function Quiz() {
   }
 
   return (
-    Data.length && (
+    data.length && (
       <div className=" w-full max-w-7xl mx-auto  bg-lightgray">
         <div className="flex flex-col place-content-center items-center pt-12 pb-6 px-12 relative overflow-hidden">
           <img
@@ -55,7 +55,7 @@ export default function Quiz() {
             className="w-58.57 absolute -top-8 -right-14"
           />
           <div className="font-bold  text-violet pb-4 space-y-8 pt-4">
-            {Data?.map((element, index) => {
+            {data?.map((element, index) => {
               return (
                 <Question
                   element={element}
@@ -66,7 +66,7 @@ export default function Quiz() {
               );
             })}
           </div>
-          <p>{Data ? "" : "Loading..."}</p>
+          <p>{data ? "" : "Loading..."}</p>
           <img
             src="/icons/blob 5.svg"
             alt="buble"
@@ -83,7 +83,7 @@ export default function Quiz() {
           {checkAnswer && (
             <div className="pt-16 flex gap-4 items-center">
               <div className="text-2xl text-violet">
-                You scored {Allcorrectanswer.length} /{Data.length} correct
+                You scored {Allcorrectanswer.length} /{data.length} correct
                 answers
               </div>
               <Button name="plain Again" handleData={playAgain} />

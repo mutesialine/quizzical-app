@@ -7,22 +7,22 @@ export default function Question(props) {
       <div className="flex gap-x-6 pt-4">
         {props.element.randomAnswers.map((element, index) => {
           const selected =props.element.chosenAnswer === element;
-          const correctanswer = element === props.element["correct_answer"];
+          const correctAnswer = element === props.element["correct_answer"];
           
           return (
             <button
               key={index}
               className={`px-4 py-2 rounded-xl border cursor-pointer text-sm 
         ${
-          props.checkAnswer && correctanswer
+          props.checkAnswer && correctAnswer
             ? "bg-lightgreen"
-            : props.checkAnswer && selected && !correctanswer
+            : props.checkAnswer && selected && !correctAnswer
             ? "bg-lightred"
             : !props.checkAnswer && !selected
             ? "border-violet"
             :selected && !props.checkAnswer
             ? "bg-lightblue"
-            : props.checkAnswer && !selected && correctanswer
+            : props.checkAnswer && !selected && correctAnswer
             ? "border-violet"
             : "border-violet"
         }`}
