@@ -7,22 +7,22 @@ export default function Question(props) {
       <div className="flex gap-x-6 pt-4">
         {props.element.randomAnswers.map((element, index) => {
           const selected =props.element.chosenAnswer === element;
-          const correctanswer = element === props.element["correct_answer"];
-
+          const correctAnswer = element === props.element["correct_answer"];
+          
           return (
             <button
               key={index}
               className={`px-4 py-2 rounded-xl border cursor-pointer text-sm 
         ${
-          props.checkAnswer && correctanswer
+          props.checkAnswer && correctAnswer
             ? "bg-lightgreen"
-            : props.checkAnswer && selected && !correctanswer
+            : props.checkAnswer && selected && !correctAnswer
             ? "bg-lightred"
             : !props.checkAnswer && !selected
             ? "border-violet"
             :selected && !props.checkAnswer
             ? "bg-lightblue"
-            : props.checkAnswer && !selected && correctanswer
+            : props.checkAnswer && !selected && correctAnswer
             ? "border-violet"
             : "border-violet"
         }`}
@@ -33,36 +33,6 @@ export default function Question(props) {
             </button>
           );
         })}
-
-        {/* {props.question.randonAnswer.map((element, index) => (
-          <button
-            key={index}
-            className={`px-4 py-2 rounded-xl border cursor-pointer text-sm ${
-              element === selected && !props.checkAnswer
-                ? "bg-lightblue" :
-                 selected == props.element.incorrect_answers && props.checkAnswer 
-                ? "bg-lightred"
-                :  element=== selected &&   element === props.element.correct_answer &&
-                  props.checkAnswer 
-                ? "bg-lightgreen"
-                : "border-violet"
-            }`}
-            // onClick={!props.checkAnswer && (() => getSelection(element))}
-              onClick={() => {
-              !props.checkAnswer && getSelection(element);
-              props.getAllSelectedAnswer((prev) => {
-                prev[props.id] = {
-                  ...prev[props.id],
-                  isCollect:
-                    element === props.element.correct_answer ? true : false,
-                };
-                return prev;
-              });
-            }}
-          >
-            {element}
-          </button>
-        ))} */}
       </div>
     </div>
   );
