@@ -9,18 +9,17 @@ export default function Quiz() {
     (el) => el["correct_answer"] === el.chosenAnswer
   );
 
+  function AllQuestion() {
+    fetch("https://opentdb.com/api.php?amount=5")
+      .then((res) => res.json())
+      .then(saveData);
+  }
 
-   function AllQuestion() {
-     fetch("https://opentdb.com/api.php?amount=5")
-       .then((res) => res.json())
-       .then(saveData);
-   }
-   
   useEffect(() => {
-    AllQuestion();
+      fetch("https://opentdb.com/api.php?amount=5")
+        .then((res) => res.json())
+        .then(saveData);
   }, []);
-
- 
 
   function saveData(Data) {
     const newData = Data.results.map((el) => ({
@@ -31,7 +30,6 @@ export default function Quiz() {
     setData(newData);
   }
 
-   
   function playAgain() {
     setData([]);
     setCheckAnswer(false);
@@ -42,7 +40,7 @@ export default function Quiz() {
     return (element) =>
       setData((prevData) => {
         return prevData.map((value, k) =>
-          index === k ? { ...value, chosenAnswer : element } : { ...value }
+          index === k ? { ...value, chosenAnswer: element } : { ...value }
         );
       });
   }
@@ -74,7 +72,7 @@ export default function Quiz() {
             alt="buble"
             className="w-58.57 absolute -bottom-10 -left-28"
           />
-          {!checkAnswer  && (
+          {!checkAnswer && (
             <div className="pt-8 flex gap-2">
               <Button
                 name="Check Answer"
